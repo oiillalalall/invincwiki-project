@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center my-5">
+    <div class="card shadow-sm" style="width: 100%; max-width: 600px; border-radius: 15px; background-color: #FFE556; color: #212529;">
+        <div class="card-body p-4" style="color: #3191CD;">
+            <h3 class="text-center mb-4 fw-bold">User Profile</h3>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Username</label>
+                <div class="form-control-plaintext bg-white p-2 border rounded fw-bold text-dark">
+                    {{ current_user.username }}
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Role</label>
+                <div class="form-control-plaintext bg-white p-2 border rounded fw-bold text-dark">
+                    {{ current_user.role }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

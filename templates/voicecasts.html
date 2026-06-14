@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Voice Actors  {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center" style="color:#3191CD">🎭 Voice Cast <a href="/add_voicecast" class="btn btn-dark" style="color: #3191CD;">Add Voice Cast</a></h1>
+<hr class="border border-1 opacity-100">
+
+<div class="row">
+    {% for voicecast in voicecasts %}
+    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card border-dark mb-3" style="width: 18rem; background-color: #FFE556;">
+            <img src="{{ url_for('static', filename='images/' ~ (voicecast.image or 'add_image.png')) }}" alt="{{ voicecast.actor_name }}" height="500">
+            <div class="card-body">
+                <h5 class="card-title">{{ voicecast.actor_name }}</h5>
+                <hr>
+                <h5 class="card-text">{{ voicecast.biography | truncate(120) }}</h5>
+                <div class="btn-group">
+                    <a href="/voicecasts/{{ voicecast.id }}" class="btn btn-dark" style="color: #3191CD;">Go Invincible</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Powers & Abilities  {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center" style="color:#3191CD">⚡ Powers & Abilities <a href="/add_power" class="btn btn-dark" style="color: #3191CD;">Add Powers & Abilities</a></h1>
+<hr class="border border-1 opacity-100">
+
+<div class="row">
+    {% for power in powers %}
+    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card border-dark mb-3" style="width: 18rem; background-color: #FFE556;">
+            <img src="{{ url_for('static', filename='images/' ~ (power.image or 'add_image.png')) }}" alt="{{ power.name }}" height="500">
+            <div class="card-body">
+                <h5 class="card-title">{{ power.name }}</h5>
+                <hr>
+                <h5 class="card-text">{{ power.description | truncate(120) }}</h5>
+                <div class="btn-group">
+                    <a href="/powers/{{ power.id }}" class="btn btn-dark" style="color: #3191CD;">Go Invincible</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

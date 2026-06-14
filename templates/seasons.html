@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Seasons {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center" style="color:#3191CD">🗓️ Seasons <a href="/add_season" class="btn btn-dark" style="color: #3191CD;">Add Season</a></h1>
+<hr class="border border-1 opacity-100">
+
+<div class="row">
+    {% for season in seasons %}
+    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card border-dark mb-3" style="width: 18rem; background-color: #FFE556;">
+            <img src="{{ url_for('static', filename='images/' ~ (season.poster or 'add_image.png')) }}" alt="{{ season.name }}" height="500">
+            <div class="card-body">
+                <h5 class="card-title">{{ season.season_number }}</h5>
+                <hr>
+                <h5 class="card-text">{{ season.summary | truncate(120) }}</h5>
+                <div class="btn-group">
+                    <a href="/seasons/{{ season.id }}" class="btn btn-dark" style="color: #3191CD;">Go Invincible</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

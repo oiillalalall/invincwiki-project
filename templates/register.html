@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger">
+        {% for error in errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container d-flex justify-content-center my-5">
+    <div class="card shadow-sm" style="width: 100%; max-width: 500px; border-radius: 15px; background-color: #FFE556; color: #212529;">
+        <div class="card-body p-4" style="color: #3191CD;">
+            <h3 class="text-center mb-4 fw-bold">Register</h3>
+
+            <form method="POST" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Username</label>
+                    {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Password</label>
+                    {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Confirm Password</label>
+                    {{ form.confirm_password(class="form-control", placeholder=form.confirm_password.label.text) }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Email</label>
+                    {{ form.email(class="form-control", placeholder=form.email.label.text) }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Mobile Number</label>
+                    {{ form.mobile(class="form-control", placeholder=form.mobile.label.text) }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Birth Date</label>
+                    {{ form.birthdate(class="form-control", placeholder=form.birthdate.label.text) }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Gender</label>
+                    {{ form.gender(class="form-control", placeholder=form.gender.label.text) }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Country</label>
+                    {{ form.country(class="form-control", placeholder=form.country.label.text) }}
+                </div>
+
+                <div class="d-grid mt-4" id="submit">
+                    <button type="submit" class="btn btn-dark fw-bold" style="color: #3191CD;">Create Account</button>
+                </div>
+            </form>
+
+            <p class="text-center mt-3 mb-0">
+                <small style="color: #212529;">Already have an account? <a href="/login" class="fw-bold" style="color: #3191CD;">Log in</a></small>
+            </p>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

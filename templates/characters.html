@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} Characters {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center" style="color:#3191CD">🦸 Characters <a href="/add_character" class="btn btn-dark" style="color: #3191CD;">Add Character</a></h1>
+<hr class="border border-1 opacity-100">
+
+<div class="row">
+    {% for character in characters %}
+    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card border-dark mb-3" style="width: 18rem; background-color: #FFE556;">
+            <img src="{{ url_for('static', filename='images/' ~ (character.image or 'add_image.png')) }}" alt="{{ character.name }}" height="500">
+            <div class="card-body">
+                <h5 class="card-title">{{ character.name }}</h5>
+                <hr>
+                <h5 class="card-text">{{ character.biography | truncate(120) }}</h5>
+                <div class="btn-group">
+                    <a href="/characters/{{ character.id }}" class="btn btn-dark" style="color: #3191CD;">Go Invincible</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

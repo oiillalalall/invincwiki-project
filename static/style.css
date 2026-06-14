@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "WoodBlockCGRegular";
+    src: url("/static/fonts/WoodBlockCG.otf") format("opentype");
+}
+
+.navbar{
+    font-family: "WoodBlockCGRegular", sans-serif;
+}
+
+.form-control#search{
+    background-color: #FFE556;
+}
+
+.btn#text{
+   color: #3191CD;
+}
+
+.container#main-content{
+    background-color: #1b2124;
+}
+
+.navbar{
+    background-color: #3191CD;
+}
+
+h1{
+     font-family: "WoodBlockCGRegular", sans-serif;
+}
+
+.row{
+    font-family: "WoodBlockCGRegular", sans-serif;
+}
+
+body::before {
+    background-image: url("/static/images/intro.jpg");
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    filter: blur(7px);
+}
+
+h3{
+    font-family: "WoodBlockCGRegular", sans-serif;
+}
+
+p{
+    font-family: "WoodBlockCGRegular", sans-serif;
+}
+
+.btn#button{
+    font-family: "WoodBlockCGRegular", sans-serif;
+}
+
+.d-grid#submit{
+    font-family: "WoodBlockCGRegular", sans-serif;
+}
+

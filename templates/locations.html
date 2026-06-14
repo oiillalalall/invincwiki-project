@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Locations  {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center" style="color:#3191CD">🌍 Locations <a href="/add_location" class="btn btn-dark" style="color: #3191CD;">Add Location</a></h1>
+<hr class="border border-1 opacity-100">
+
+<div class="row">
+    {% for location in locations %}
+    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center" >
+        <div class="card border-dark mb-3" style="width: 18rem; background-color: #FFE556; ">
+            <img src="{{ url_for('static', filename='images/' ~ (location.image or 'add_image.jpg')) }}" alt="{{ location.name }}" height="500">
+            <div class="card-body">
+                <h5 class="card-title">{{ location.name }}</h5>
+                <hr>
+                <h5 class="card-text">{{ location.description | truncate(120) }}</h5>
+                <div class="btn-group">
+                    <a href="/locations/{{ location.id }}" class="btn btn-dark" style="color: #3191CD;">Go Invincible</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

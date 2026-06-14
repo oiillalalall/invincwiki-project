@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Species  {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center" style="color:#3191CD">👽 Species <a href="/add_specie" class="btn btn-dark" style="color: #3191CD;">Add Specie</a></h1>
+<hr class="border border-1 opacity-100">
+
+<div class="row">
+    {% for specie in species %}
+    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card border-dark mb-3" style="width: 18rem; background-color: #FFE556;">
+            <img src="{{ url_for('static', filename='images/' ~ (specie.image or 'add_image.png')) }}" alt="{{ specie.name }}" height="500">
+            <div class="card-body">
+                <h5 class="card-title">{{ specie.name }}</h5>
+                <hr>
+                <h5 class="card-text">{{ specie.description | truncate(120) }}</h5>
+                <div class="btn-group">
+                    <a href="/species/{{ specie.id }}" class="btn btn-dark" style="color: #3191CD;">Go Invincible</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

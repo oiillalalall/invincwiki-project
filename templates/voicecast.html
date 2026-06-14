@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Voice Actors  {% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+
+    <div class="row mb-4">
+        <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/' ~ (item.image or 'add_image.png')) }}"
+                 class="img-fluid rounded border border-dark"
+                 alt="{{ item.actor_name }}"
+                 width="1000"
+                 height="1000">
+        </div>
+
+        <div class="col-md-8" style="color: #3191CD;">
+            <table class="table table-borderless mt-3 mb-0">
+                <tr>
+                    <th style="width:180px;">Actor Name</th>
+                    <td>{{ item.actor_name }}</td>
+                </tr>
+                <tr>
+                    <th style="width:180px;">Character</th>
+                    <td>{{ item.character_id }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3 style="color: #3191CD;">Biography</h3>
+    <p style="color: #3191CD;">{{ item.biography }}</p>
+
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <a href="/voicecasts" class="btn btn-dark" id="button" style="color: #3191CD;">
+            ⬅ Back to Voice Casts
+        </a>
+
+        <div class="btn-group">
+            {%if current_user.role == "admin" %}
+            <a href="/edit_voicecast/{{ item.id }}" class="btn btn-info">Edit</a>
+            <a href="/delete_voicecast/{{ item.id }}" class="btn btn-danger">Delete</a>
+            {%endif%}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

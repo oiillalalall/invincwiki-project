@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %} Characters {% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+
+    <div class="row mb-4">
+        <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/' ~ (character.image or 'add_image.png')) }}"
+                 class="img-fluid rounded border border-dark" alt="{{ character.name }}" width="1000" height="1000">
+        </div>
+
+        <div class="col-md-8" style="color: #3191CD;">
+            <h1>
+                {{ character.name }}
+                {% if character.alias %}<small>"{{ character.alias }}"</small>{% endif %}
+            </h1>
+            {% if character.real_name and character.real_name != character.name %}
+                <p class="mb-1">Real Name: {{ character.real_name }}</p>
+            {% endif %}
+
+            <span class="badge bg-dark mb-2" style="color: #3191CD;">{{ character.status }}</span>
+            {% if character.gender %}<span class="badge bg-secondary mb-2">{{ character.gender }}</span>{% endif %}
+
+            {% if character.quote %}
+            <blockquote class="blockquote mt-3 ps-3" style="border-left: 4px solid #FFE556;">
+                <p class="mb-0 fst-italic">"{{ character.quote }}"</p>
+            </blockquote>
+            {% endif %}
+
+            <table class="table table-borderless mt-3 mb-0">
+                {% if species %}<tr><th style="width:180px;">Species</th><td>{{ species.name }}</td></tr>{% endif %}
+                {% if character.occupation %}<tr><th>Occupation</th><td>{{ character.occupation }}</td></tr>{% endif %}
+                {% if character.affiliation %}<tr><th>Affiliation</th><td>{{ character.affiliation }}</td></tr>{% endif %}
+                {% if character.height %}<tr><th>Height</th><td>{{ character.height }}</td></tr>{% endif %}
+                {% if character.weight %}<tr><th>Weight</th><td>{{ character.weight }}</td></tr>{% endif %}
+                {% if character.voice_actor %}<tr><th>Voice Actor</th><td>{{ character.voice_actor }}</td></tr>{% endif %}
+                <tr><th>First Appearance</th><td>{{ character.first_appearance_episode }}{% if character.first_appearance_comic %} / {{ character.first_appearance_comic }}{% endif %}</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3 style="color: #3191CD;">Biography</h3>
+    <p style="color: #3191CD;">{{ character.biography }}</p>
+
+    {% if character.powers %}
+    <h3 style="color: #3191CD;">Powers & Abilities</h3>
+    <p style="color: #3191CD;">{{ character.powers }}</p>
+    {% endif %}
+
+    <div class="row" style="color: #3191CD;">
+        {% if character.relatives %}
+        <div class="col-md-6">
+            <h4>Relatives</h4>
+            <p>{{ character.relatives }}</p>
+        </div>
+        {% endif %}
+        {% if character.enemies %}
+        <div class="col-md-6">
+            <h4>Enemies</h4>
+            <p>{{ character.enemies }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <a href="/characters" class="btn btn-dark" id="button" style="color: #3191CD;">⬅ Back to Characters</a>
+        <div class="btn-group">
+            {%if current_user.role == "admin" %}
+            <a href="/edit_character/{{ character.id }}" class="btn btn-info">Edit</a>
+            <a href="/delete_character/{{ character.id }}" class="btn btn-danger">Delete</a>
+            {%endif%}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

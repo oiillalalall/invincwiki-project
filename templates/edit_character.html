@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Characters {% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    {% for errors in form.errors.values() %}
+    <div class="alert alert-danger">
+        {% for error in errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container d-flex justify-content-center my-5">
+    <div class="card shadow-sm" style="width: 100%; max-width: 600px; border-radius: 15px; background-color: #FFE556; color: #212529;">
+        <div class="card-body p-4" style="color: #3191CD;">
+            <h3 class="text-center mb-4 fw-bold">Edit Character</h3>
+
+            <form method="POST" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                {% for field in form if field.name not in ['csrf_token', 'submit'] %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">{{ field.label.text }}</label>
+                    {{ field(class="form-control", placeholder=field.label.text) }}
+                </div>
+                {% endfor %}
+
+                <div class="d-grid mt-4" id="submit">
+                    {{ form.submit(class="btn btn-dark fw-bold", style="color: #3191CD;", value="Update Character") }}
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

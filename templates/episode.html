@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %} Episodes {% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+
+    <div class="row mb-4">
+        <div class="col-md-4 text-center">
+            <img src="{{ url_for('static', filename='images/' ~ (item.image or 'add_image.png')) }}"
+                 class="img-fluid rounded border border-dark"
+                 alt="{{ item.title }}"
+                 width="1000"
+                 height="1000">
+        </div>
+
+        <div class="col-md-8" style="color: #3191CD;">
+            <table class="table table-borderless mt-3 mb-0">
+                <tr>
+                    <th style="width:180px;">Title</th>
+                    <td>{{ item.title }}</td>
+                </tr>
+                <tr>
+                    <th style="width:180px;">Season</th>
+                    <td>{{ item.season_id }}</td>
+                </tr>
+                 <tr>
+                    <th style="width:180px;">Episode</th>
+                    <td>{{ item.episode_number }}</td>
+                </tr>
+                <tr>
+                    <th style="width:180px;">Date</th>
+                    <td>{{ item.air_date }}</td>
+                </tr>
+                <tr>
+                    <th style="width:180px;">Time</th>
+                    <td>{{ item.runtime }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <hr>
+
+    <h3 style="color: #3191CD;">Summary</h3>
+    <p style="color: #3191CD;">{{ item.summary }}</p>
+
+
+    <h3 style="color: #3191CD;">Featured Characters</h3>
+    <p style="color: #3191CD;">{{ item.featured_characters }}</p>
+
+
+    <h3 style="color: #3191CD;">Important Events</h3>
+    <p style="color: #3191CD;">{{ item.important_events }}</p>
+
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <a href="/episodes" class="btn btn-dark" id="button" style="color: #3191CD;">
+            ⬅ Back to Episodes
+        </a>
+
+        <div class="btn-group">
+            {%if current_user.role == "admin" %}
+            <a href="/edit_episode/{{ item.id }}" class="btn btn-info">Edit</a>
+            <a href="/delete_episode/{{ item.id }}" class="btn btn-danger">Delete</a>
+            {%endif%}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

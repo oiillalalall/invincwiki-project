@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Comics {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center" style="color:#3191CD">📖 Comics <a href="/add_comic" class="btn btn-dark" style="color: #3191CD;">Add Comic</a></h1>
+<hr class="border border-1 opacity-100">
+
+<div class="row">
+    {% for comic in comics %}
+    <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center" >
+        <div class="card border-dark mb-3" style="width: 18rem; background-color: #FFE556; ">
+            <img src="{{ url_for('static', filename='images/' ~ (comic.cover_image or 'add_image.jpg')) }}" alt="{{ comic.name }}" height="500">
+            <div class="card-body">
+                <h5 class="card-title">{{ comic.title }}</h5>
+                <hr>
+                <h5 class="card-text">{{ comic.summary | truncate(120) }}</h5>
+                <div class="btn-group">
+                    <a href="/comics/{{ comic.id }}" class="btn btn-dark" style="color: #3191CD;">Go Invincible</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
