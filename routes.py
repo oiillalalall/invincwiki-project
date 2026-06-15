@@ -767,5 +767,6 @@ def search():
         role="admin"
     )
 
-#ufff shemovevle ais es rro gamiketa
+#ufff shemovevle ais es rro gamiketa (searchze vambob)
 #wtf ver gavaswore agarr maq tvini karroche es ar moqmedebs
+#claudma sanam routes gavaketebdi bani damado🫩🫩 age verifikacia ara is kide
