@@ -1,46 +1,35 @@
-# 🦸‍♂️ InvincWiki
+# 🦸‍♂️ Invinwiki
 
-Welcome to **InvincWiki**, the ultimate, community-driven encyclopedia dedicated to the *Invincible* universe! Whether you want to look up Omni-Man's powers, track Mark Grayson's brutal battles, or contribute detailed lore about the Coalition of Planets, this is the place.
-
-InvincWiki is a fully interactive web application where fans can read, create, and edit articles about characters, issues, locations, and lore from the comic and animated series.
+Welcome to the **Invincible Universe Database**! This is a dynamic, full-stack web application designed to track, manage, and explore everything related to the *Invincible* comic series and animated television show. From characters and factions to multi-dimensional story arcs and superpowers, this app serves as the ultimate digital encyclopedia.
 
 ---
 
 ## 🚀 Features
 
-*   **Community-Driven Editing:** Anyone can create an account and contribute or edit articles.
-*   **Dynamic Search:** Quick and intuitive search bar to find your favorite heroes and villains instantly.
-*   **Categorized Lore:** Content organized by Characters, Lore, Issues, and Factions.
-*   **Rich Text Editor:** Markdown or WYSIWYG support for clean, well-formatted article creation.
-*   **Version History:** (Optional feature if applicable) Track changes and revert edits to prevent vandalism.
+* **Dynamic Data Management:** Seamlessly add, update, and manage entries for Seasons, Episodes, Comics, Characters, Organizations, Species, Weapons, and Story Arcs.
+* **Smart Forms:** Utilizes dynamic Jinja2 templating with automated form generation driven by `WTForms`.
+* **File Upload Integration:** Support for uploading character avatars, comic issue cover arts, and story arc promotional images via `multipart/form-data`.
+* **Security First:** Implements built-in **CSRF protection tokens** (`hidden_tag()`) across all data submission forms to protect the database backend from malicious scripts.
+* **Modern UI:** Built using an *Invincible*-themed custom yellow and blue color scheme, fully responsive via modern utility classes.
 
 ---
 
 ## 🛠️ Tech Stack
 
-This project is built using the following technologies:
-
-*   **Frontend:** [e.g., React.js / Next.js / Vue.js] & [e.g., Tailwind CSS / Bootstrap]
-*   **Backend:** [e.g., Node.js / Express / Django / Firebase]
-*   **Database:** [e.g., MongoDB / PostgreSQL / MySQL]
-*   **Authentication:** [e.g., JWT / Auth0 / Firebase Auth]
+* **Backend:** Python (Flask / FastAPI)
+* **Frontend:** HTML5, Jinja2 Templating Engine, Bootstrap 5 (or custom CSS framework)
+* **Form Management:** WTForms
+* **Database:** SQL-based Relational Database (PostgreSQL / SQLite / MySQL)
 
 ---
 
-## 📦 Getting Started
+## 📂 Project Structure
 
-Follow these steps to set up the project locally on your machine.
-
-### Prerequisites
-
-Make sure you have the following installed:
-*   [Node.js](https://nodejs.org/) (v16 or higher)
-*   [Git](https://git-scm.com/)
-*   [Your Database, e.g., MongoDB]
-
-### Installation
-
-1. **Clone the repository:**
-```bash
-   git clone [https://github.com/YOUR_USERNAME/invincwiki.git](https://github.com/YOUR_USERNAME/invincwiki.git)
-   cd invincwiki
+```text
+├── app/
+│   ├── models/          # Database structural models (Seasons, Powers, etc.)
+│   ├── routes/          # Form submit routers and view endpoints
+│   ├── templates/       # Jinja2 HTML templates (Add forms, View lists)
+│   └── static/          # Images, custom styles, and configurations
+├── README.md
+└── requirements.txt     # Python environment dependencies
