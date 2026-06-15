@@ -5,5 +5,5 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
-    admin = User(username="iliasuyvars20larianishaurma", password="iliabasketbalerria", role="admin")
+    admin = User(username="iliaadmin123", password="iliabasketbaleria", role="admin")
     admin.create()
